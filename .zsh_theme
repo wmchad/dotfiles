@@ -1,0 +1,60 @@
+# set theme and prompt order
+
+ZSH_THEME="bullet-train"
+# theme colors
+BULLETTRAIN_TIME_BG=004
+BULLETTRAIN_TIME_FG=249
+BULLETTRAIN_DIR_BG=030
+BULLETTRAIN_DIR_FG=253
+BULLETTRAIN_GIT_BG=102
+BULLETTRAIN_GIT_FG=253
+
+
+BULLETTRAIN_PROMPT_ORDER=(
+
+    status
+
+    time
+
+    dir
+
+    git
+
+#    awsping # custom prompt segment, defined below
+
+    screen
+
+)
+
+# define prompt segment. first get the status from the ec2-status command
+
+ prompt_awsping() {
+
+     prefix=$(ec2-status)
+
+     [[ -z $prefix  ]] && return
+
+     # add a corresponding emoji to make it fancy
+
+     case $prefix in
+
+         running)
+
+             ec2_status=✅
+
+             ;;
+
+         stopped)
+
+             ec2_status=❌
+
+             ;;
+
+     esac
+
+     # add prompt segment built off of existing AWS variables for bg/fg colors and ☁️ prefix, + custom status string + status emoji
+
+     prompt_segment $BULLETTRAIN_AWS_BG $BULLETTRAIN_AWS_FG $BULLETTRAIN_AWS_PREFIX" EC2 ${prefix} ${ec2_status}"
+
+ }
+
