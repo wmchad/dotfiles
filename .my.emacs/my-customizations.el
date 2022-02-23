@@ -8,6 +8,7 @@
 
 ;; Line numbers
 (global-display-line-numbers-mode)
+(setq column-number-mode t)
 
 ;; y or n for answering questions
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -34,15 +35,50 @@
 ;; theme
 (load-theme 'monokai t)
 
+;; ws-butler
+(use-package ws-butler)
+(add-hook 'prog-mode-hook #'ws-butler-mode)
+
+
 
 ;; ESS
-(setq ess-eval-visibly nil)
 (setq ess-ask-for-ess-directory nil)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ess-own-style-list
+   '((ess-indent-offset . 2)
+     (ess-offset-arguments . open-delim)
+     (ess-offset-arguments-newline . prev-call)
+     (ess-offset-block . prev-line)
+     (ess-offset-continued . straight)
+     (ess-align-nested-calls "ifelse")
+     (ess-align-arguments-in-calls "function[   ]*(")
+     (ess-align-continuations-in-calls . t)
+     (ess-align-blocks control-flow)
+     (ess-indent-from-lhs arguments fun-decl-opening)
+     (ess-indent-from-chain-start . t)
+     (ess-indent-with-fancy-comments . t)))
+ '(package-selected-packages '(monokai-theme ess use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(setq ess-default-style 'OWN)
 
 ;; spell-check
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
+
+(use-package latex
+  :ensure auctex)
 
 
 ;; Scala

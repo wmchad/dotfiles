@@ -6,3 +6,6 @@
 [user]
 	name = Chad Young
 	email = cyoung@twinstrandbio.com
+[core]
+	excludesfile = /Users/chadyoung/.gitignore_global
+	precomposeunicode = false
