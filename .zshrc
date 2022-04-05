@@ -15,23 +15,9 @@ eval "$(jenv init -)"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 export PATH="/usr/local/opt/openssl@3/bin:$PATH"
+export PATH="/Users/chadyoung/.cargo/bin:$PATH"
 
 setopt extended_glob
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/chadyoung/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/chadyoung/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/chadyoung/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/chadyoung/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 ##################################################
 # aliases
@@ -55,6 +41,9 @@ alias l='ls -lah'
 alias t2='tree -L 2'
 alias t3='tree -L 3'
 
+# conda/mamba environment
+alias myenv='mamba activate dsrpEnv'
+
 # Git
 alias gs='git status'
 alias ga='git add -A .'
@@ -64,6 +53,13 @@ alias rstd='open -a RStudio'
 
 # duplex-seq tools
 alias ts-tools='java -jar ~/twinstrandbio/duplex-seq/jars/twinstrand-tools.jar'
+
+##################################################
+## grep
+##################################################
+rgrep () {
+    grep -nr --include \*.R $1
+}
 
 ##################################################
 # EC2
@@ -102,4 +98,24 @@ msync_cur () {
 alias mlist='mutagen sync list'
 alias mterm_cur='mutagen sync terminate ${CUR_PRJ}'
 
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/chadyoung/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/chadyoung/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/chadyoung/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/chadyoung/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/chadyoung/miniconda3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/chadyoung/miniconda3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 

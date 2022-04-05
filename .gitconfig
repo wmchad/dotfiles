@@ -5,7 +5,7 @@
 	process = git-lfs filter-process
 [user]
 	name = Chad Young
-	email = cyoung@twinstrandbio.com
+	email = 5580041+wmchad@users.noreply.github.com
 [core]
 	excludesfile = /Users/chadyoung/.gitignore_global
 	precomposeunicode = false

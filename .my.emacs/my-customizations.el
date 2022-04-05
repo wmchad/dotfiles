@@ -19,6 +19,8 @@
 ;; Delete section when highlighted and I start typing
 (delete-selection-mode 1)
 
+;; No tabs
+(setq-default indent-tabs-mode nil)
 
 ;; Define and initialise package repositories
 (require 'package)
@@ -38,7 +40,6 @@
 ;; ws-butler
 (use-package ws-butler)
 (add-hook 'prog-mode-hook #'ws-butler-mode)
-
 
 
 ;; ESS
@@ -71,6 +72,13 @@
  )
 
 (setq ess-default-style 'OWN)
+
+;; No fancy comments
+(setq ess-indent-with-fancy-comments nil)
+(defun my-ess-settings ()
+  (setq ess-indent-with-fancy-comments nil))
+(add-hook 'ess-mode-hook #'my-ess-settings)
+
 
 ;; spell-check
 (dolist (hook '(text-mode-hook))

@@ -1,5 +1,3 @@
-(global-set-key "\M-r" 'shell-command)
-
 ; no menus
 (menu-bar-mode 0)
 
@@ -29,7 +27,7 @@
      (ess-indent-from-chain-start . t)
      (ess-indent-with-fancy-comments . t)))
  '(package-selected-packages
-   '(ws-butler poly-R poly-markdown polymode markdown-preview-mode lsp-metals lsp-mode magit ess doom-themes monokai-theme use-package)))
+   '(shackle ws-butler poly-R poly-markdown polymode markdown-preview-mode lsp-metals lsp-mode magit ess doom-themes monokai-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,5 +35,13 @@
  ;; If there is more than one, they won't work right.
  )
 
+(setq shackle-default-rule '(:same t))
 
-
+;; (split-window-right)
+;; (other-window 1)
+;; (R)
+;; (other-window 1)
+;; (split-window-below)
+;; (other-window 1)
+;; (shell)
+;; (other-window -1)
