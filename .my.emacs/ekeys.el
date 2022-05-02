@@ -5,9 +5,23 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key (kbd "\C-c e") 'ispell-word)
 (global-set-key "\M-r" 'shell-command)
+(global-set-key (kbd "\C-c |") 'align-regexp)
 
 (defun prev-window ()
   (interactive nil)
   (other-window -1))
+
+(defun align-equal ()
+  (interactive nil)
+  (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)=")
+  )
+
+(defun align-assign ()
+  (interactive nil)
+  (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(=\\|<-\\)")
+  )
+
 (global-set-key "\M-o" `prev-window)
 (global-set-key "\C-xp" `prev-window)
+(global-set-key (kbd "\C-c =") 'align-equal)
+(global-set-key (kbd "\C-c -") 'align-assign)

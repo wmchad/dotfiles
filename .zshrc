@@ -58,7 +58,7 @@ alias ts-tools='java -jar ~/twinstrandbio/duplex-seq/jars/twinstrand-tools.jar'
 ## grep
 ##################################################
 rgrep () {
-    grep -nr --include \*.R $1
+    grep -nr --include \*.R --include \*.Rmd --include \*.rmd --include \*.md $1
 }
 
 ##################################################
