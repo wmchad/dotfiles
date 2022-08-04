@@ -119,3 +119,5 @@ if [ -f "/Users/chadyoung/miniconda3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+
+export PATH="$HOME/.poetry/bin:$PATH"

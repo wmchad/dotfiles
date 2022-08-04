@@ -43,3 +43,4 @@
 ;; (other-window 1)
 ;; (shell)
 ;; (other-window -1)
+(put 'set-goal-column 'disabled nil)
